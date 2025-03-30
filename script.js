@@ -11,7 +11,7 @@ const maxGuess =6;
 const resetGame =()=>{
     correctLetters=[];
     wrongGuessCount=0;
-    hangmanImage.src=`image/hangman-${wrongGuessCount}.svg`;
+    hangmanImage.src=`hangman-${wrongGuessCount}.svg`;
     guessesText.innerText=`${wrongGuessCount}/ ${maxGuess}`;
     keyboardDiv.querySelectorAll("button").forEach(btn =>btn.disabled= false);
     wordDisplay.innerHTML=currentWord.split("").map(()=>`<li class="letter"></li>`).join("");
@@ -30,7 +30,7 @@ const gameOver = (isVictory)=>{
     //after 600ms of game complete.. Showing modal with relevant details
     setTimeout(()=>{
         const ModalText= isVictory ?`You found the word:` : `The correct word was`;
-        gameModal.querySelector("img").src =`image/${isVictory? 'victory':'lost'}.gif`;
+        gameModal.querySelector("img").src =`${isVictory? 'victory':'lost'}.gif`;
         gameModal.querySelector("h4").innerText =`${isVictory? 'congrats!':'gameover!'}`;
         gameModal.querySelector("p").innerHTML =`${ModalText} <b>${currentWord}</b>`;
         gameModal.classList.add("show");
@@ -49,7 +49,7 @@ const initGame=(button, clickedLetter)=>{
     }
     else{
         wrongGuessCount++;
-        hangmanImage.src=`image/hangman-${wrongGuessCount}.svg`;
+        hangmanImage.src=`hangman-${wrongGuessCount}.svg`;
     }
     button.disabled=true; //jo use kar liya woh disable
     guessesText.innerText=`${wrongGuessCount}/ ${maxGuess}`;
